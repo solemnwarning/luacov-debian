@@ -2,3 +2,7 @@
 
 %:
 	dh $@ --buildsystem=lua --with lua
+
+install:
+	dh $@ --buildsystem=lua --with lua
+	install -D src/bin/luacov debian/lua-luacov/usr/bin/luacov
