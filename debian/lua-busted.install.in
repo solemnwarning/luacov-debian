@@ -1,2 +1,0 @@
-include @@TEMPLATE@@/lib.install.in
-bin/luacov usr/bin/
