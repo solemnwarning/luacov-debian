@@ -1,5 +1,18 @@
-[![Build Status](https://travis-ci.org/keplerproject/luacov.svg?branch=master)](https://travis-ci.org/keplerproject/luacov)
-[![Windows build status](https://ci.appveyor.com/api/projects/status/dd9gk87cpkqo5s58?svg=true)](https://ci.appveyor.com/project/mpeterv/luacov)
+<div align="center">
+    <h1>LuaCov</h1>
+    <img src="./docs/logo/luacov-144x144.png" width="144" />
+    <p align="center">
+        Coverage analyzer for Lua
+    </p>
+</div>
+
+<br>
+
+## Status
+[![Unix build](https://img.shields.io/github/actions/workflow/status/lunarmodules/luacov/unix_build.yml?branch=master&label=Unix%20build&logo=linux)](https://github.com/lunarmodules/luacov/actions/workflows/unix_build.yml)
+[![Windows build](https://ci.appveyor.com/api/projects/status/nwlc6603cva412ub?svg=true)](https://ci.appveyor.com/project/hishamhm/luacov)
+[![Lint](https://github.com/lunarmodules/luacov/workflows/Lint/badge.svg)](https://github.com/lunarmodules/luacov/actions/workflows/lint.yml)
+[![SemVer](https://img.shields.io/github/v/tag/lunarmodules/luacov?color=brightgreen&label=SemVer&logo=semver&sort=semver)](CHANGELOG.md)
 
 ## Overview
 
@@ -16,7 +29,7 @@ LuaCov is free software and, like Lua, is released under the
 ## Download and Installation
 
 LuaCov can be downloaded from its
-[Github downloads page](https://github.com/keplerproject/luacov/releases).
+[Github downloads page](https://github.com/lunarmodules/luacov/releases).
 
 It can also be installed using Luarocks:
 
@@ -100,7 +113,7 @@ LuaCov saves its stats upon normal program termination. If your program is a
 daemon -- in other words, if it does not terminate normally -- you can use the
 `luacov.tick` module or `tick` configuration option, which periodically saves
 the stats file. For example, to run (on Unix systems) LuaCov on
-[Xavante](httpsf://keplerproject.github.io/xavante/), just modify the first line
+[Xavante](httpsf://lunarmodules.github.io/xavante/), just modify the first line
 of `xavante_start.lua` so it reads:
 
 ```
@@ -122,9 +135,11 @@ LuaCov includes several configuration options, which have their defaults
 stored in `src/luacov/defaults.lua`. These are the global defaults. To use
 project specific configuration, create a Lua script setting options as globals
 or returning a table with some options and store it as `.luacov` in the project
-directory from where `luacov` is being run. For example, this config informs
-LuaCov that only `foo` module and its submodules should be covered and that
-they are located inside `src` directory:
+directory from where `luacov` is being run. Alternatively, store it elsewhere
+and specify the path in the `LUACOV_CONFIG` environment variable.
+
+For example, this config informs LuaCov that only `foo` module and its
+submodules should be covered and that they are located inside `src` directory:
 
 ```lua
 modules = {
@@ -134,7 +149,18 @@ modules = {
 ```
 
 For a full list of options, see
-[`luacov.defaults` documentation](https://keplerproject.github.io/luacov/doc/modules/luacov.defaults.html).
+[`luacov.defaults` documentation](https://lunarmodules.github.io/luacov/doc/modules/luacov.defaults.html).
+
+## Html reporter
+
+To generate report file as html document, adjust the `.luacov` parameters to
+
+```lua
+reporter = "html"
+reportfile = "luacov.report.html"
+```
+
+![LuaCov Html Reporter](docs/luacov-html-reporter.png)
 
 ## Custom reporter engines
 
@@ -144,6 +170,7 @@ packages. Check them out!
 * Cobertura: https://github.com/britzl/luacov-cobertura
 * Coveralls: https://github.com/moteus/luacov-coveralls
 * Console: https://github.com/spacewander/luacov-console
+* LCOV: https://github.com/daurnimator/luacov-reporter-lcov
 
 ## Using development version
 
@@ -153,7 +180,7 @@ After cloning this repo, these commands may be useful:
 * `busted` to run tests using [busted](https://github.com/Olivine-Labs/busted).
 * `ldoc .` to regenerate documentation using
   [LDoc](https://github.com/stevedonovan/LDoc).
-* `luacheck .` to lint using [Luacheck](https://github.com/mpeterv/luacheck).
+* `luacheck .` to lint using [Luacheck](https://github.com/lunarmodules/luacheck).
 
 ## Credits
 
