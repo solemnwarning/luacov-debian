@@ -13,6 +13,7 @@ Package: lua-luacov
 Architecture: all
 Depends: ${misc:Depends},
          lua5.2 | lua,
+         lua-datafile,
          lua-filesystem
 XB-Lua-Versions: ${lua:Versions}
 Provides: ${lua:Provides}
